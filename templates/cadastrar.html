@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
 {% block body %}
-
+<form action="" method="POST">
+    <h1>Nova </h1>
+    <div class="mb-3">
+      <label for="descricao" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="descricao" name = "descricao">
+      </div>
+    <div class="mb-3">
+      <label for="valor" class="form-label">Valor</label>
+      <input type="text" class="form-control" id="valor" name=valor>
+    </div>
+    <div class="mb-3">
+        <label for="data" class="form-label">Data</label>
+        <input type="date" class="form-control" id="data" name="data">
+      </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
 {% endblock %}

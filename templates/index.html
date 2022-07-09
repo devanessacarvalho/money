@@ -17,14 +17,14 @@
 
   <div class="d-grid gap-4 d-md-flex">
     <a 
-      href="{{url_for('cadastrar')}}"
+      href="{{url_for('cadastrar', tipo='receita')}}"
       class="btn btn-success"
       name="type"value="receita"
     >
       + Receita
     </a>
     <a 
-      href="{{url_for('cadastrar')}}"
+      href="{{url_for('cadastrar',tipo='despesa')}}"
       class="btn btn-warning"
       name="type" value="despesa"
     >
