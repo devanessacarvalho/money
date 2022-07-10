@@ -1,14 +1,34 @@
 from tinydb import TinyDB, Query
 
-bd = TinyDB("Transactions.json")
-transactions = Query()
+db = TinyDB("Database.json")
+Database = Query()
 
-def createTransaction(transaction):
-    bd.insert(transaction)
+table_receitas = db.table('receitas')
+table_despesas = db.table('despesas')
 
-def getALL():
-    return bd.all()
 
+def createReceita(receita):
+    table_receitas.insert(receita)
+
+def createDespesa(despesa):
+    table_despesas.insert(despesa)
+
+def totalReceitas():
+    total = 0
+    for row in table_receitas:
+        total+=row['valor']
+    return total
+
+def totalDespesas():
+    total = 0
+    for row in table_despesas:
+        total+=row['valor']
+    return total
+
+def saldo():
+    receitas = totalReceitas()
+    despesas = totalDespesas()
+    return receitas - despesas
 
     
 
