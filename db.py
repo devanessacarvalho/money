@@ -33,5 +33,7 @@ def extrato():
 def excluirTransacao(id):
     db.remove(Database.id == id)
 
+def editarTransacao(dados, id):
+    db.update(dados, Database.id == id)
     
 

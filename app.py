@@ -1,4 +1,4 @@
-from db import createTransacao, totalReceitas, totalDespesas, saldo, extrato, excluirTransacao
+from db import createTransacao, totalReceitas, totalDespesas, saldo, extrato, excluirTransacao, editarTransacao
 from uuid import uuid4
 from flask import Flask, render_template, redirect, request
 
@@ -36,5 +36,20 @@ def deletar(id):
   excluirTransacao(id)
   
   return redirect("/")
+
+@app.route('/editar/<id>', methods=['GET', 'POST'])
+def editar(id):
+  if request.method == 'GET':
+    return render_template('editar.html')
+
+  newDados = {
+    'descricao':request.form['descricao'],
+    'valor':float(request.form['valor']),
+    'data':request.form['data'],
+  }
+
+  editarTransacao(newDados, id)
+ 
+  return redirect('/')
 
 app.run(debug=True)
