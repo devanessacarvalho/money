@@ -1,5 +1,6 @@
-from uuid import uuid4
 from flask import Flask, render_template, redirect, request
+from uuid import uuid4
+from datetime import date
 
 from db import createTransacao
 from db import totalReceitas, totalDespesas, saldo, extrato, obterTransacao
@@ -22,12 +23,16 @@ def index():
 def cadastrar(tipo):
   if request.method == 'GET':
     return render_template('cadastrar.html', tipo=tipo)
+
+  data = request.form['data']
+  if(not request.form['data']):
+    data = str(date.today())
     
   dados = {
     'id': str(uuid4()),
     'descricao':request.form['descricao'],
     'valor':float(request.form['valor']),
-    'data':request.form['data'],
+    'data':data,
     'tipo': tipo,
   }
 
