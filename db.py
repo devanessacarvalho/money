@@ -29,6 +29,9 @@ def saldo():
 
 def extrato():
     return db.all()
+
+def obterTransacao(id):
+    return db.get(Database.id == id)
     
 def excluirTransacao(id):
     db.remove(Database.id == id)
