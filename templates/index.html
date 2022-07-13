@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 {% block body %} 
-<div class="container-fluid" >
   <h1>MoneY</h1>
-  <div class="input-group mb-3">
-    <span class="input-group-text">Saldo </span>
-    <span class="input-group-text">R$ {{saldo}}</span>
-  </div>
-  <div class="input-group mb-3">
-    <span class="input-group-text">Receita Mensal </span>
-    <span class="input-group-text">R$ {{receita}}</span>
-  </div>
-  <div class="input-group mb-3">
-    <span class="input-group-text">Despesa Mensal</span>
-    <span class="input-group-text">R$ {{despesa}}</span>
+  <div lass="d-flex flex-column justify-content-center align-items-center">
+    <div class="input-group mb-3">
+      <span class="input-group-text">Saldo </span>
+      <span class="input-group-text">R$ {{saldo}}</span>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Receita Mensal </span>
+      <span class="input-group-text">R$ {{receita}}</span>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Despesa Mensal</span>
+      <span class="input-group-text">R$ {{despesa}}</span>
+    </div>
   </div>
 
   <div class="d-grid gap-4 d-md-flex">
@@ -63,5 +64,4 @@
         {% endfor %}
     </table>
   </div>
-</div>    
 {% endblock %}
