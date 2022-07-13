@@ -1,4 +1,4 @@
-from db import createReceita, createDespesa, totalReceitas, totalDespesas, saldo, excluirTransacao
+from db import createTransacao, totalReceitas, totalDespesas, saldo, extrato, excluirTransacao
 from uuid import uuid4
 from flask import Flask, render_template, redirect, request
 
@@ -10,7 +10,8 @@ def index():
     'index.html',
     saldo = saldo(), 
     receita=totalReceitas(), 
-    despesa = totalDespesas()
+    despesa = totalDespesas(),
+    extrato = extrato(),
   )
 
 @app.route('/cadastrar/<tipo>', methods=['GET', 'POST'])
@@ -23,15 +24,16 @@ def cadastrar(tipo):
     'descricao':request.form['descricao'],
     'valor':float(request.form['valor']),
     'data':request.form['data'],
+    'tipo': tipo,
   }
 
-  createReceita(dados) if tipo == 'receita' else createDespesa(dados)
+  createTransacao(dados)
  
   return redirect('/')
 
-@app.route('/deletar/<tipo>/<id>')
-def deletar(tipo, id):
-  excluirTransacao(tipo, id)
+@app.route('/deletar/<id>')
+def deletar(id):
+  excluirTransacao(id)
   
   return redirect("/")
 

@@ -45,20 +45,22 @@
         </tr>
       </thead>
       <tbody>
+        {% for item in extrato %}
         <tr>
-          <td scope="row">19/11/2000</td>
-          <td>1200</td>
-          <td>Salario</td>
-          <td>receita</td>
+          <td scope="row">{{item["data"]}}</td>
+          <td>{{item["valor"]}}</td>
+          <td>{{item["descricao"]}}</td>
+          <td>{{item["tipo"]}}</td>
           <td>
-            <a class="btn btn-danger" href='/deletar/receita/8b206b50-c157-440c-a950-e521cf5c46e4'>
+            <a class="btn btn-danger" href='/deletar/{{item["id"]}}'>
               Deletar
             </a>
-            <a href='/atualizar/receita/8b206b50-c157-440c-a950-e521cf5c46e4'class="btn btn-secondary">
+            <a href='/atualizar/{{item["id"]}}'class="btn btn-secondary">
               Atualizar
             </a>
           </td>
         </tr>
+        {% endfor %}
     </table>
   </div>
 </div>    
