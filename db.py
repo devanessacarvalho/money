@@ -6,7 +6,6 @@ Database = Query()
 table_receitas = db.table('receitas')
 table_despesas = db.table('despesas')
 
-
 def createReceita(receita):
     table_receitas.insert(receita)
 
@@ -29,6 +28,15 @@ def saldo():
     receitas = totalReceitas()
     despesas = totalDespesas()
     return receitas - despesas
+
+def excluirReceita(id):
+    table_receitas.remove(Database.id == id)
+
+def excluirDespesa(id):
+    table_despesas.remove(Database.id == id)
+
+def excluirTransacao(tipo, id):
+    excluirReceita(id) if tipo == 'receita' else excluirDespesa(id)
 
     
 
